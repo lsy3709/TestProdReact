@@ -1,22 +1,9 @@
 import { Button } from "antd";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const InfoTestUseEffect = () => {
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
-
-  // useEffect(() => {
-  //   console.log("useEffect 호출이됨. ");
-  //   console.log({
-  //     name,
-  //     nickname,
-  //   });
-
-  //   return () => {
-  //     console.log("후처리 함수 호출 ");
-  //     console.log(name);
-  //   };
-  // }, []);
 
   const [visible, setVisible] = useState(false);
 
