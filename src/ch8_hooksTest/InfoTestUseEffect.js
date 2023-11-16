@@ -5,18 +5,18 @@ const InfoTestUseEffect = () => {
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
 
-  useEffect(() => {
-    console.log("useEffect 호출이됨. ");
-    console.log({
-      name,
-      nickname,
-    });
+  // useEffect(() => {
+  //   console.log("useEffect 호출이됨. ");
+  //   console.log({
+  //     name,
+  //     nickname,
+  //   });
 
-    return () => {
-      console.log("후처리 함수 호출 ");
-      console.log(name);
-    };
-  }, []);
+  //   return () => {
+  //     console.log("후처리 함수 호출 ");
+  //     console.log(name);
+  //   };
+  // }, []);
 
   const [visible, setVisible] = useState(false);
 

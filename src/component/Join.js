@@ -9,6 +9,7 @@ const Join = () => {
   );
 
   const [File, setFile] = useState("");
+  console.log(File);
 
   const fileInput = useRef(null);
 
