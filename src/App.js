@@ -32,47 +32,53 @@ import NewsPage from "./ch13_API_PublicDataTest/page/NewsPage";
 
 import TestColorMain from "./ch14_ContextAPITest/TestColorMain";
 import FireMain from "./ch15_FirebaseTest/FireMain";
+import UserContext, { UserProvider } from "./ch15_FirebaseTest/FireAuthContext";
 
 function App() {
   return (
     // 페이지 이동을 위한 설정 2. 전체 요소를
     //BrowserRouter 로 감싸기.
     // 구성요소는 Routes -> Route 로 구성할 예정.
-    <BrowserRouter>
-      <Routes>
-        {/* 메인으로 사용할(index->주소에서 : / ) 페이지를 App 또는 Main.js 로 해도 됨 */}
-        <Route index element={<Main />} />
-        {/* 주소: http://localhost:3000/join -> 해당 페이지 안내 : element={<이동할 컴포넌트>} */}
-        <Route path="join" element={<Join />} />
-        {/* 추가, 3장에서 연습했던, MyComp라는 컴포넌트 페이지 이동에 추가해보기 */}
-        <Route path="mycount" element={<MyCount />} />
-        <Route path="scrollRefTest" element={<RefPracticeScrollTest />} />
-        <Route path="listKeyDataAddDel" element={<DataListKeyAddDelTest />} />
-        <Route path="ClassLifeCycleTest" element={<LifeCycleTest />} />
-        <Route path="useStateTest" element={<InfoTestUseState />} />
-        <Route path="useEffectTest" element={<InfoTestUseEffect />} />
-        <Route path="useReducerTest" element={<CountUseReducerTest />} />
-        <Route path="useReducerTest2" element={<InfoTestUseReducer />} />
-        <Route path="useMemoTest" element={<AverageUseMemoTest />} />
-        <Route path="useCallbackTest" element={<AverageUseCallbackTest />} />
-        <Route path="useRefTest" element={<AverageUseRefTest />} />
-        {/* useParams test 설정2 : path="useParamsTest/:id" */}
-        <Route path="useParamsTest/:id" element={<AverageUseParamsTest8 />} />
-        <Route path="customHooksTest" element={<InfoTestCustomHooks9 />} />
-        <Route path="sassTest" element={<TestSass />} />
-        <Route path="styledComponentsTest" element={<StyledComponentsTest />} />
-        <Route path="todoMain" element={<TodoMain />} />
-        <Route path="immerTest" element={<ImmerTest />} />
-        <Route path="immerTestZone" element={<TestZone2 />} />
-        <Route path="apiTest" element={<ApiTest />} />
-        <Route path="apiTest2" element={<ApiTestKoreaNews />} />
-        {/* <Route path="apiTest3" element={<MainNews />} /> */}
-        <Route path="newsPageTest/:category" element={<NewsPage />} />
-        <Route path="contextAPITest" element={<TestColorMain />} />
-        <Route path="firebaseTest" element={<FireMain />} />
-        {/* <Route path="contextAPITest" element={<TestColorBox />} /> */}
-      </Routes>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* 메인으로 사용할(index->주소에서 : / ) 페이지를 App 또는 Main.js 로 해도 됨 */}
+          <Route index element={<Main />} />
+          {/* 주소: http://localhost:3000/join -> 해당 페이지 안내 : element={<이동할 컴포넌트>} */}
+          <Route path="join" element={<Join />} />
+          {/* 추가, 3장에서 연습했던, MyComp라는 컴포넌트 페이지 이동에 추가해보기 */}
+          <Route path="mycount" element={<MyCount />} />
+          <Route path="scrollRefTest" element={<RefPracticeScrollTest />} />
+          <Route path="listKeyDataAddDel" element={<DataListKeyAddDelTest />} />
+          <Route path="ClassLifeCycleTest" element={<LifeCycleTest />} />
+          <Route path="useStateTest" element={<InfoTestUseState />} />
+          <Route path="useEffectTest" element={<InfoTestUseEffect />} />
+          <Route path="useReducerTest" element={<CountUseReducerTest />} />
+          <Route path="useReducerTest2" element={<InfoTestUseReducer />} />
+          <Route path="useMemoTest" element={<AverageUseMemoTest />} />
+          <Route path="useCallbackTest" element={<AverageUseCallbackTest />} />
+          <Route path="useRefTest" element={<AverageUseRefTest />} />
+          {/* useParams test 설정2 : path="useParamsTest/:id" */}
+          <Route path="useParamsTest/:id" element={<AverageUseParamsTest8 />} />
+          <Route path="customHooksTest" element={<InfoTestCustomHooks9 />} />
+          <Route path="sassTest" element={<TestSass />} />
+          <Route
+            path="styledComponentsTest"
+            element={<StyledComponentsTest />}
+          />
+          <Route path="todoMain" element={<TodoMain />} />
+          <Route path="immerTest" element={<ImmerTest />} />
+          <Route path="immerTestZone" element={<TestZone2 />} />
+          <Route path="apiTest" element={<ApiTest />} />
+          <Route path="apiTest2" element={<ApiTestKoreaNews />} />
+          {/* <Route path="apiTest3" element={<MainNews />} /> */}
+          <Route path="newsPageTest/:category" element={<NewsPage />} />
+          <Route path="contextAPITest" element={<TestColorMain />} />
+          <Route path="firebaseTest" element={<FireMain />} />
+          {/* <Route path="contextAPITest" element={<TestColorBox />} /> */}
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 

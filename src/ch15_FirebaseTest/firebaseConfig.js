@@ -5,6 +5,9 @@ import { getFirestore } from "@firebase/firestore";
 // 파이어스토어에 접근할수 있게해주는 ID 등등 - 로그인해야지 준다
 //스토리지
 import { getStorage } from "firebase/storage";
+//인증
+import { getAuth } from "firebase/auth";
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -20,3 +23,5 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 //스토리지
 export const storage = getStorage(app);
+//인증
+export const auth = getAuth(app);
