@@ -6,7 +6,6 @@ import {
   uploadString,
   getDownloadURL,
 } from "firebase/storage";
-import { storage } from "./firebaseConfig";
 
 import { v4 as uuidv4 } from "uuid"; // 랜덤 식별자를 생성해주는 라이브러리
 // const storage = getStorage();

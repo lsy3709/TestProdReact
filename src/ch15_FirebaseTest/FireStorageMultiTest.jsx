@@ -6,7 +6,7 @@ import {
   deleteObject, // 스토리지의 이미지 파일을 삭제하는 함수
 } from "firebase/storage";
 // https://www.npmjs.com/package/rc-progress
-import { Line, Circle } from "rc-progress";
+import { Line } from "rc-progress";
 
 import { storage } from "./firebaseConfig";
 import { db } from "./firebaseConfig";
@@ -14,11 +14,8 @@ import {
   collection,
   getDocs,
   addDoc,
-  updateDoc,
   doc,
   deleteDoc,
-  query,
-  orderBy,
   Timestamp,
 } from "firebase/firestore";
 
@@ -109,19 +106,7 @@ const FireStorageMultiTest = () => {
         // Uh-oh, an error occurred!
       });
   };
-  const showDate = () => {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = ("0" + (today.getMonth() + 1)).slice(-2);
-    const day = ("0" + today.getDate()).slice(-2);
-    const dateString = year + "-" + month + "-" + day;
-    const hours = ("0" + today.getHours()).slice(-2);
-    const minutes = ("0" + today.getMinutes()).slice(-2);
-    const seconds = ("0" + today.getSeconds()).slice(-2);
-    const timeString = hours + ":" + minutes + ":" + seconds;
-    const fullTime = dateString + timeString;
-    return fullTime;
-  };
+
   // 업로드시 호출될 함수
   // e : event, fileList : 선택한 이미지들
   const handleImageUpload = async (e, fileList) => {
@@ -146,17 +131,17 @@ const FireStorageMultiTest = () => {
             (error) => {
               // A full list of error codes is available at
               // https://firebase.google.com/docs/storage/web/handle-errors
-              switch (error.code) {
-                case "storage/unauthorized":
-                  // User doesn't have permission to access the object
-                  break;
-                case "storage/canceled":
-                  // User canceled the upload
-                  break;
-                case "storage/unknown":
-                  // Unknown error occurred, inspect error.serverResponse
-                  break;
-              }
+              // switch (error.code) {
+              //   case "storage/unauthorized":
+              //     // User doesn't have permission to access the object
+              //     break;
+              //   case "storage/canceled":
+              //     // User canceled the upload
+              //     break;
+              //   case "storage/unknown":
+              //     // Unknown error occurred, inspect error.serverResponse
+              //     break;
+              // }
             },
             () => {
               // 이미지 스토리지에 업로드 성공하면, then

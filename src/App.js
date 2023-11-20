@@ -32,7 +32,7 @@ import NewsPage from "./ch13_API_PublicDataTest/page/NewsPage";
 
 import TestColorMain from "./ch14_ContextAPITest/TestColorMain";
 import FireMain from "./ch15_FirebaseTest/FireMain";
-import UserContext, { UserProvider } from "./ch15_FirebaseTest/FireAuthContext";
+import { UserProvider } from "./ch15_FirebaseTest/FireAuthContext";
 
 function App() {
   return (

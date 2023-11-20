@@ -10,7 +10,7 @@ import UserContext from "./FireAuthContext";
 
 const FireMain = () => {
   const { state, actions } = useContext(UserContext);
-  const [userData, setUserData] = useState(null);
+  // const [userData, setUserData] = useState(null);
 
   const emailAction = (data) => {
     actions.setUseremail(data);
@@ -24,7 +24,7 @@ const FireMain = () => {
     const provider = new GoogleAuthProvider(); // provider를 구글로 설정
     signInWithPopup(auth, provider) // popup을 이용한 signup
       .then((data) => {
-        setUserData(data.user); // user data 설정
+        // setUserData(data.user); // user data 설정
         emailAction(data.user.email);
         nameAction(data.user.displayName);
         console.log(data.user.displayName); // console로 들어온 데이터 표시
@@ -37,7 +37,7 @@ const FireMain = () => {
 
   const onLogOutClick = () => {
     auth.signOut();
-    setUserData(null);
+    // setUserData(null);
     emailAction(null);
     nameAction(null);
   };
