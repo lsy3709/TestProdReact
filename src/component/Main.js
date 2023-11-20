@@ -291,6 +291,16 @@ const Main = () => {
           >
             contextAPITest 확인
           </Button>
+          <br />
+          <Button
+            title="firebaseTest"
+            type="primary"
+            onClick={() => {
+              navigate("/firebaseTest");
+            }}
+          >
+            firebaseTest 확인
+          </Button>
         </Container>
       </div>
     </Wrapper>
