@@ -4,7 +4,7 @@ import FireStorageTest from "./FireStorageTest";
 import FireStorageMultiTest from "./FireStorageMultiTest";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "./firebaseConfig";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Button } from "antd";
 import UserContext from "./FireAuthContext";
 

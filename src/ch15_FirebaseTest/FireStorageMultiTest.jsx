@@ -152,6 +152,7 @@ const FireStorageMultiTest = () => {
               });
             }
           );
+          return null;
         })
       );
       setPhotosURL(images);
