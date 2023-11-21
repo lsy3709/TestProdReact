@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 // 속성 예시2 , 함수로 전달하기.
 const UserContext = createContext({
   // state 속성으로 값으로
-  state: { userName: "사용자", userEmail: "test@test.com" },
+  state: { userName: "", userEmail: "" },
   // actions 속성으로 함수로
   actions: {
     setUsername: () => {},
@@ -13,8 +13,8 @@ const UserContext = createContext({
 
 // provider 만들기. = 세터 랑 역할이 비슷
 const UserProvider = ({ children }) => {
-  const [userName, setUsername] = useState("사용자");
-  const [userEmail, setUseremail] = useState("test@test.com");
+  const [userName, setUsername] = useState("");
+  const [userEmail, setUseremail] = useState("");
   const value = {
     // 상태값
     state: { userName, userEmail },

@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useContext, useState, useRef } from "react";
+import UserContext from "./FireAuthContext";
 import {
   ref, // 선택된 이미지 의 인스턴스,
   uploadBytesResumable, // 이미지 파일을 업로드 시 진행상황을 보거나, 중단, 재개 함수
@@ -55,6 +56,7 @@ const FireStorageMultiTest = () => {
   //파이어베이스 스토어, 스토리지에 저장된 이미지 이름 저장하는 스토어 컬렉션 참조
   const imagesCollectionRef = collection(db, "testImages");
 
+  const { state } = useContext(UserContext);
   //최초 1회시 스토어에서, 이미지 컬렉션 데이터 모두 가져오기.
   // useEffect(() => {
   //   // 비동기로 데이터 받을준비
@@ -84,6 +86,7 @@ const FireStorageMultiTest = () => {
     // addDoc을 이용해서 내가 원하는 collection에 내가 원하는 key로 값을 추가한다.
     // await addDoc(imagesCollectionRef, { imgUrl: downurl, regDate: showDate() });
     await addDoc(imagesCollectionRef, {
+      writer: state.userName,
       fileName: "testName" + uuidv4(),
       imgUrl: downurl,
       regDate: Timestamp.fromDate(new Date()),
@@ -211,7 +214,8 @@ const FireStorageMultiTest = () => {
                   style={({ width: "200px" }, { height: "150px" })}
                   src={url.imgUrl}
                   alt="사용자 첨부 이미지"
-                />
+                />{" "}
+                &nbsp;
                 <button
                   onClick={() => {
                     //삭제시, 스토어에서 삭제 하고, 또 스토리지도 같이 삭제 필요.
@@ -221,6 +225,8 @@ const FireStorageMultiTest = () => {
                 >
                   삭제
                 </button>
+                &nbsp;
+                <span>작성자: {url.writer}</span>
               </li>
             ))}
           </ul>
