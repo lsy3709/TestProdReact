@@ -66,7 +66,7 @@ const FireStorageMultiTest = () => {
     };
     getImages();
     // console.log("images : " + images[0].imgUrl);
-  }, [imagesCollectionRef]);
+  });
   // useEffect(() => {
   //   getImages();
   // });
