@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   ref, // 선택된 이미지 의 인스턴스,
   uploadBytesResumable, // 이미지 파일을 업로드 시 진행상황을 보거나, 중단, 재개 함수
@@ -56,17 +56,17 @@ const FireStorageMultiTest = () => {
   const imagesCollectionRef = collection(db, "testImages");
 
   //최초 1회시 스토어에서, 이미지 컬렉션 데이터 모두 가져오기.
-  // useEffect(() => {
-  //   // 비동기로 데이터 받을준비
-  //   const getImages = async () => {
-  //     // getDocs로 컬렉션안에 데이터 가져오기
-  //     const data = await getDocs(imagesCollectionRef);
-  //     // testImages의  data안의 자료 추가. 객체에 id 덮어씌우는거
-  //     setImages(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  //   };
-  //   getImages();
-  //   // console.log("images : " + images[0].imgUrl);
-  // }, []);
+  useEffect(() => {
+    // 비동기로 데이터 받을준비
+    const getImages = async () => {
+      // getDocs로 컬렉션안에 데이터 가져오기
+      const data = await getDocs(imagesCollectionRef);
+      // testImages의  data안의 자료 추가. 객체에 id 덮어씌우는거
+      setImages(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getImages();
+    // console.log("images : " + images[0].imgUrl);
+  }, []);
   // useEffect(() => {
   //   getImages();
   // });
