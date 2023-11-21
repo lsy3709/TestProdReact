@@ -57,22 +57,25 @@ const FireStorageMultiTest = () => {
 
   //최초 1회시 스토어에서, 이미지 컬렉션 데이터 모두 가져오기.
   // useEffect(() => {
-  // 비동기로 데이터 받을준비
+  //   // 비동기로 데이터 받을준비
+  //   const getImages = async () => {
+  //     // getDocs로 컬렉션안에 데이터 가져오기
+  //     const data = await getDocs(imagesCollectionRef);
+  //     // testImages의  data안의 자료 추가. 객체에 id 덮어씌우는거
+  //     setImages(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  //   };
+  //   getImages();
+  //   // console.log("images : " + images[0].imgUrl);
+  // }, []);
+  useEffect(() => {
+    getImages();
+  });
   const getImages = async () => {
     // getDocs로 컬렉션안에 데이터 가져오기
     const data = await getDocs(imagesCollectionRef);
-    // testImages의  data안의 자료 추가. 객체에 id 덮어씌우는거
+    // users에 data안의 자료 추가. 객체에 id 덮어씌우는거
     setImages(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
-  getImages();
-  // console.log("images : " + images[0].imgUrl);
-  // });
-  // const getImages = async () => {
-  //   // getDocs로 컬렉션안에 데이터 가져오기
-  //   const data = await getDocs(imagesCollectionRef);
-  //   // users에 data안의 자료 추가. 객체에 id 덮어씌우는거
-  //   setImages(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  // };
 
   // 디비(스토어), 이미지의  url 저장하기.
   const createImage = async (downurl) => {
