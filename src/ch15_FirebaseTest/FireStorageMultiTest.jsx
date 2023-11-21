@@ -76,6 +76,7 @@ const FireStorageMultiTest = () => {
     // users에 data안의 자료 추가. 객체에 id 덮어씌우는거
     setImages(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
+
   getImages();
 
   // 디비(스토어), 이미지의  url 저장하기.
