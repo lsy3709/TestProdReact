@@ -33,7 +33,7 @@ const FireMain = () => {
     setUserData(sessionStorage.getItem("userName"));
     //   setLogState(sessionStorage.getItem("email"));
     //   console.log("logstate", logState);
-  });
+  }, []);
 
   // google auth
   const handleGoogleLogin = () => {
