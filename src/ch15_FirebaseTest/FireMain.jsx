@@ -4,7 +4,7 @@ import FireStorageTest from "./FireStorageTest";
 import FireStorageMultiTest from "./FireStorageMultiTest";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "./firebaseConfig";
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "antd";
 // 컨텍스트 예제
 // import UserContext from "./FireAuthContext";
@@ -33,7 +33,7 @@ const FireMain = () => {
     setUserData(sessionStorage.getItem("userName"));
     //   setLogState(sessionStorage.getItem("email"));
     //   console.log("logstate", logState);
-  });
+  }, [userData]);
 
   // google auth
   const handleGoogleLogin = () => {
