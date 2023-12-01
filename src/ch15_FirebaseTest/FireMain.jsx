@@ -49,7 +49,7 @@ const FireMain = () => {
         // nameAction(data.user.displayName);
         // console.log(data.user.displayName); // console로 들어온 데이터 표시
         sessionStorage.setItem("userName", data.user.displayName);
-        localStorage.setItem("userName", data.user.displayName);
+        // localStorage.setItem("userName", data.user.displayName);
         // localStorage.getItem("key")
         setUserData(sessionStorage.getItem("userName"));
       })
@@ -62,7 +62,7 @@ const FireMain = () => {
   const onLogOutClick = () => {
     auth.signOut();
     sessionStorage.clear();
-    localStorage.removeItem("userName");
+    // localStorage.removeItem("userName");
     setUserData("");
     // emailAction(null);
     // nameAction(null);
