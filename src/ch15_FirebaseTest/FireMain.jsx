@@ -21,9 +21,9 @@ const FireMain = () => {
   //   actions.setUsername(data);
   // };
 
-  const setUserDataAction = (data) => {
-    setUserData(data);
-  };
+  // const setUserDataAction = (data) => {
+  //   setUserData(data);
+  // };
   // const noSetUserDataAction = () => {};
 
   // 실행시 마다, 로그인 정보 확인.
