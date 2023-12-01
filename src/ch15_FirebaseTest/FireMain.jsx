@@ -45,6 +45,8 @@ const FireMain = () => {
         // nameAction(data.user.displayName);
         // console.log(data.user.displayName); // console로 들어온 데이터 표시
         sessionStorage.setItem("userName", data.user.displayName);
+        localStorage.setItem("userName", data.user.displayName);
+        // localStorage.getItem("key")
         setUserDataAction(data.user.displayName);
       })
       .catch((err) => {
@@ -57,6 +59,7 @@ const FireMain = () => {
     auth.signOut();
     setUserData("");
     sessionStorage.clear();
+    localStorage.removeItem("userName");
     // emailAction(null);
     // nameAction(null);
     //      setItem(key, value) - 키/값 쌍을 저장한다.
