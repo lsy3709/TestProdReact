@@ -4,7 +4,7 @@ import FireStorageTest from "./FireStorageTest";
 import FireStorageMultiTest from "./FireStorageMultiTest";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "./firebaseConfig";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "antd";
 // 컨텍스트 예제
 // import UserContext from "./FireAuthContext";
@@ -28,12 +28,16 @@ const FireMain = () => {
 
   // 실행시 마다, 로그인 정보 확인.
 
+  const logResult = useCallback(() => {
+    setUserData(sessionStorage.getItem("userName"));
+  }, []); //이제 logResult가 메모된다.
+
   useEffect(() => {
     // 가져오기 샘플
     setUserData(sessionStorage.getItem("userName"));
     //   setLogState(sessionStorage.getItem("email"));
     //   console.log("logstate", logState);
-  }, []);
+  }, [logResult]);
 
   // google auth
   const handleGoogleLogin = () => {
@@ -47,7 +51,7 @@ const FireMain = () => {
         sessionStorage.setItem("userName", data.user.displayName);
         localStorage.setItem("userName", data.user.displayName);
         // localStorage.getItem("key")
-        setUserDataAction(data.user.displayName);
+        setUserData(sessionStorage.getItem("userName"));
       })
       .catch((err) => {
         console.log(err);
@@ -57,9 +61,9 @@ const FireMain = () => {
 
   const onLogOutClick = () => {
     auth.signOut();
-    setUserData("");
     sessionStorage.clear();
     localStorage.removeItem("userName");
+    setUserData("");
     // emailAction(null);
     // nameAction(null);
     //      setItem(key, value) - 키/값 쌍을 저장한다.
