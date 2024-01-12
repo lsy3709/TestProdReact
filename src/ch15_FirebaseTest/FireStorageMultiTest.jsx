@@ -77,7 +77,7 @@ const FireStorageMultiTest = () => {
   //파이어베이스 스토어, 스토리지에 저장된 이미지 이름 저장하는 스토어 컬렉션 참조
   const imagesCollectionRef = collection(db, "testImages");
 
-  const { state } = useContext(UserContext);
+  // const { state } = useContext(UserContext);
   //최초 1회시 스토어에서, 이미지 컬렉션 데이터 모두 가져오기.
   // useEffect(() => {
   //   // 비동기로 데이터 받을준비
