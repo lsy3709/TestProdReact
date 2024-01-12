@@ -1,5 +1,12 @@
-import React, { useContext, useState, useRef } from "react";
+import React, {
+  useContext,
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+} from "react";
 import UserContext from "./FireAuthContext";
+import { Button } from "antd";
 import {
   ref, // 선택된 이미지 의 인스턴스,
   uploadBytesResumable, // 이미지 파일을 업로드 시 진행상황을 보거나, 중단, 재개 함수
@@ -48,6 +55,20 @@ const FireStorageMultiTest = () => {
   const [progress, setProgress] = useState(0); // 업로드 진행상태
   // 파일 선택시 파일리스트 상태 변경해주는 함수
   // 선택된 여러 이미지를 배열로 담아두기.
+
+  const [userData, setUserData] = useState("");
+
+  const logResult = useCallback(() => {
+    setUserData(sessionStorage.getItem("userName"));
+  }, []); //이제 logResult가 메모된다.
+
+  useEffect(() => {
+    // 가져오기 샘플
+    setUserData(sessionStorage.getItem("userName"));
+    //   setLogState(sessionStorage.getItem("email"));
+    //   console.log("logstate", logState);
+  }, [logResult]);
+
   const handleImageChange = (e) => {
     for (const image of e.target.files) {
       setFileList((prevState) => [...prevState, image]);
@@ -79,14 +100,14 @@ const FireStorageMultiTest = () => {
     setImages(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
-  getImages();
+  // getImages();
 
   // 디비(스토어), 이미지의  url 저장하기.
   const createImage = async (downurl) => {
     // addDoc을 이용해서 내가 원하는 collection에 내가 원하는 key로 값을 추가한다.
     // await addDoc(imagesCollectionRef, { imgUrl: downurl, regDate: showDate() });
     await addDoc(imagesCollectionRef, {
-      writer: state.userName,
+      writer: userData,
       fileName: "testName" + uuidv4(),
       imgUrl: downurl,
       regDate: Timestamp.fromDate(new Date()),
@@ -203,6 +224,11 @@ const FireStorageMultiTest = () => {
           />
         </label>
         <button type="submit">{isUploading ? "업로드중..." : "업로드"}</button>
+        <br />
+        <br />
+        <Button type="primary" onClick={getImages}>
+          이미지 불러오기
+        </Button>
       </form>
       {images.length > 0 && (
         <div>
